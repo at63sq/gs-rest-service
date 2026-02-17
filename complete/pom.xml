@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  pom.xml - Maven ビルド設定ファイル（complete版・Java）
+
+  【解説】
+  Maven（メイヴン）はJavaプロジェクトのビルドツールです。
+  pom.xml（Project Object Model）は、プロジェクトの設定・依存関係を
+  XML形式で記述するファイルです。
+
+  Gradleと同じ役割を持ちますが、記述形式が異なります。
+  このプロジェクトではGradleとMavenの両方のビルドファイルが用意されており、
+  どちらを使ってもビルドできます。
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!-- POMのバージョン（常に4.0.0） -->
   <modelVersion>4.0.0</modelVersion>
+
+  <!-- parent: 親プロジェクトの設定を継承する。Spring Boot Starter Parentを指定すると、
+       依存ライブラリのバージョン管理やプラグイン設定が自動で行われる -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>4.0.1</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.example</groupId>
-  <artifactId>rest-service-complete</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>rest-service-complete</name>
-  <description>Demo project for Spring Boot</description>
+
+  <!-- プロジェクトの基本情報 -->
+  <groupId>com.example</groupId>                    <!-- 組織の識別子 -->
+  <artifactId>rest-service-complete</artifactId>     <!-- プロジェクトの識別子 -->
+  <version>0.0.1-SNAPSHOT</version>                  <!-- バージョン（SNAPSHOTは開発中の意味） -->
+  <name>rest-service-complete</name>                 <!-- プロジェクト名 -->
+  <description>Demo project for Spring Boot</description>  <!-- 説明文 -->
+
+  <!-- プロジェクト共通のプロパティ（変数のようなもの） -->
   <properties>
-    <java.version>17</java.version>
+    <java.version>17</java.version>  <!-- 使用するJavaのバージョン -->
   </properties>
+
+  <!-- 依存ライブラリの宣言 -->
   <dependencies>
+    <!-- spring-boot-starter-webmvc: Spring MVC Webアプリ開発に必要なライブラリ一式 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc</artifactId>
     </dependency>
 
+    <!-- テスト用ライブラリ。scope=test はテスト時のみ使用する意味 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc-test</artifactId>
@@ -29,8 +53,10 @@
     </dependency>
   </dependencies>
 
+  <!-- ビルド設定 -->
   <build>
     <plugins>
+      <!-- spring-boot-maven-plugin: 実行可能なJARファイルを作成するプラグイン -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>

@@ -1,28 +1,52 @@
+/*
+ * build.gradle - Gradleビルド設定ファイル（complete版・Java）
+ *
+ * 【解説】
+ * Gradleは「ビルドツール」の一つです。ビルドツールとは、ソースコードのコンパイル、
+ * 依存ライブラリのダウンロード、テストの実行、実行可能ファイルの作成などを
+ * 自動化するツールです。Mavenと並んでJavaプロジェクトで広く使われています。
+ *
+ * このファイルはGroovy言語で記述されています。
+ */
+
+// plugins: プロジェクトに追加する機能（プラグイン）を宣言
 plugins {
-  id 'java'
-  id 'org.springframework.boot' version '4.0.1'
-  id 'io.spring.dependency-management' version '1.1.7'
+  id 'java'  // Javaプロジェクトとしてビルドするためのプラグイン
+  id 'org.springframework.boot' version '4.0.1'  // Spring Bootアプリのパッケージング・実行を可能にする
+  id 'io.spring.dependency-management' version '1.1.7'  // 依存ライブラリのバージョンを自動管理する
 }
 
+// プロジェクトのグループID（組織を識別する名前。Javaのパッケージ名と対応することが多い）
 group = 'com.example'
+// プロジェクトのバージョン。SNAPSHOTは「開発中」を意味する
 version = '0.0.1-SNAPSHOT'
 
+// Javaのバージョン設定
 java {
   toolchain {
+    // Java 17を使用するよう指定（LTS = 長期サポートバージョン）
     languageVersion = JavaLanguageVersion.of(17)
   }
 }
 
+// 依存ライブラリのダウンロード元を指定
 repositories {
-  mavenCentral()
+  mavenCentral()  // Maven Central: 世界最大のJavaライブラリ公開リポジトリ
 }
 
+// プロジェクトが使用する外部ライブラリ（依存関係）を宣言
 dependencies {
+  // implementation: アプリケーション本体で使うライブラリ
+  // spring-boot-starter-webmvc: Spring MVCによるWebアプリケーション開発に必要なライブラリ一式
   implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+  // testImplementation: テストコードでのみ使うライブラリ
   testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+  // testRuntimeOnly: テスト実行時にのみ必要なライブラリ
+  // JUnit Platform Launcher: JUnit 5テストの実行エンジン
   testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+// テスト実行時の設定
 test {
-  useJUnitPlatform()
+  useJUnitPlatform()  // JUnit 5（JUnit Platform）を使用してテストを実行する
 }

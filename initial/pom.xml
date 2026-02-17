@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  pom.xml - Maven ビルド設定ファイル（initial版・Java）
+
+  【解説】
+  初期状態（initial）のMavenビルドファイルです。
+  complete版とほぼ同じ構成ですが、ソースコードにREST APIエンドポイントは未実装です。
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <!-- 親プロジェクト: Spring Boot Starter Parentから設定を継承 -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>4.0.1</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <relativePath/>
   </parent>
-  <groupId>com.example</groupId>
-  <artifactId>rest-service</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <groupId>com.example</groupId>         <!-- 組織の識別子 -->
+  <artifactId>rest-service</artifactId>   <!-- プロジェクト識別子 -->
+  <version>0.0.1-SNAPSHOT</version>       <!-- バージョン -->
   <name>rest-service</name>
   <description>Demo project for Spring Boot</description>
   <properties>
-    <java.version>17</java.version>
+    <java.version>17</java.version>       <!-- Java 17を使用 -->
   </properties>
   <dependencies>
+    <!-- Web MVC開発用ライブラリ -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc</artifactId>
     </dependency>
-
+    <!-- テスト用ライブラリ -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webmvc-test</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
+      <!-- 実行可能JARを作成するプラグイン -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
-
 </project>

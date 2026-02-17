@@ -1,8 +1,17 @@
+# manifest.yml - Cloud Foundry デプロイ設定ファイル
+#
+# 【解説】
+# Cloud Foundry（クラウド・ファウンドリー）は、アプリケーションをクラウド環境に
+# デプロイ（配置）するためのPaaS（Platform as a Service）です。
+# このファイルは Cloud Foundry にデプロイする際の設定を YAML 形式で記述します。
+#
+# YAML（ヤムル）は、設定ファイルによく使われるデータ記述形式です。
+# インデント（字下げ）で階層構造を表現します。
 ---
 applications:
-- name: gs-rest-service
-  memory: 256M
-  instances: 1
-  host: rest-service
-  domain: guides.spring.io
-  path: build/libs/gs-rest-service-0.1.0.jar
+- name: gs-rest-service       # アプリケーション名
+  memory: 256M                 # 使用メモリ量（256メガバイト）
+  instances: 1                 # 起動するインスタンス（サーバー）の数
+  host: rest-service           # ホスト名（URLの一部になる）
+  domain: guides.spring.io     # ドメイン名
+  path: build/libs/gs-rest-service-0.1.0.jar  # デプロイするJARファイルのパス

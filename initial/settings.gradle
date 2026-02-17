@@ -1,1 +1,8 @@
+/*
+ * settings.gradle - Gradleプロジェクトの設定ファイル
+ *
+ * 【解説】
+ * rootProject.name でプロジェクト名を定義します。
+ * ビルド成果物の名付けに使用されます。
+ */
 rootProject.name = 'rest-service'

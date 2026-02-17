@@ -1,1 +1,9 @@
+/*
+ * settings.gradle - Gradleプロジェクトの設定ファイル
+ *
+ * 【解説】
+ * rootProject.name はプロジェクトのルート名を定義します。
+ * ビルド成果物（JARファイル等）の名前に使われます。
+ * マルチプロジェクト構成の場合、ここでサブプロジェクトも定義します。
+ */
 rootProject.name = 'rest-service-complete'

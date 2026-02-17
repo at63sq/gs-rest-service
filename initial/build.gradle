@@ -1,28 +1,38 @@
+/*
+ * build.gradle - Gradleビルド設定ファイル（initial版・Java）
+ *
+ * 【解説】
+ * これは初期状態（initial）のビルドファイルです。
+ * complete版と同じ依存関係を持っていますが、ソースコードにはまだ
+ * REST APIのエンドポイントが実装されていません。
+ */
+
+// plugins: プロジェクトに追加する機能（プラグイン）を宣言
 plugins {
-  id 'java'
-  id 'org.springframework.boot' version '4.0.1'
-  id 'io.spring.dependency-management' version '1.1.7'
+  id 'java'  // Javaプロジェクト用プラグイン
+  id 'org.springframework.boot' version '4.0.1'  // Spring Bootプラグイン
+  id 'io.spring.dependency-management' version '1.1.7'  // 依存関係バージョン管理
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+group = 'com.example'       // 組織の識別子
+version = '0.0.1-SNAPSHOT'  // バージョン（開発中）
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(17)  // Java 17を使用
   }
 }
 
 repositories {
-  mavenCentral()
+  mavenCentral()  // ライブラリのダウンロード元
 }
 
 dependencies {
-  implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-  testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  implementation 'org.springframework.boot:spring-boot-starter-webmvc'  // Web MVC本体
+  testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'  // テスト用
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'  // JUnit 5実行エンジン
 }
 
 test {
-  useJUnitPlatform()
+  useJUnitPlatform()  // JUnit 5でテスト実行
 }
